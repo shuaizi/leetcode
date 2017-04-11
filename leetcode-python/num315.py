@@ -19,14 +19,24 @@ class Solution(object):
         i = start
         j = mid + 1
         k = 0
-        while i <= mid and j <= end:
-            if nums[i].get('value') > nums[j].get('value'):
+        jump = 0
+        while i <= mid or j <= end:
+            if i > mid:
+                tmp[k] = nums[j]
+                j += 1
+                jump += 1
+            elif j > end:
                 tmp[k] = nums[i]
-                ret[nums[i].get('index')] += 1
+                ret[tmp[k].get('index')] += jump
+                i += 1
+            elif nums[i].get('value') <= nums[j].get('value'):
+                tmp[k] = nums[i]
+                ret[tmp[k].get('index')] += jump
                 i += 1
             else:
                 tmp[k] = nums[j]
                 j += 1
+                jump += 1
             k += 1
 
         while i <= mid:
@@ -35,8 +45,6 @@ class Solution(object):
             k += 1
 
         while j <= end:
-            for m in range(start, mid+1):
-                ret[nums[m].get('index')] += 1
             tmp[k] = nums[j]
             j += 1
             k += 1
@@ -57,4 +65,4 @@ class Solution(object):
 
 
 sol = Solution()
-print sol.countSmaller([1, 9, 7, 8])
+print sol.countSmaller([1, 1])
