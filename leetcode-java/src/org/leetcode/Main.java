@@ -5,9 +5,9 @@ package org.leetcode;
  */
 public class Main {
     public static void main(String[] args){
-        Num164 sol = new Num164();
-        int[] nums = {1,1,1,1,1,5,5,5,5,5};
-        int ret = sol.maximumGap(nums);
+        Num316 sol = new Num316();
+        String str = "cbacdcbcd";
+        String ret = sol.removeDuplicateLetters(str);
         System.out.println(ret);
     }
 }
